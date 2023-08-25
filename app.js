@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://nabid:test-123@cluster0.je3wmz7.mongodb.net/BlogDB");
+mongoose.connect(process.env.MONGOOSE_CONNECTION_KEY);
 
 const blogSchema = new mongoose.Schema({
   title: String,
